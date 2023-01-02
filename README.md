@@ -5,19 +5,19 @@
 
 ## 스프링 프로젝트 생성
 
-### :paperclip: https://start.spring.io
+#### https://start.spring.io
 
 - 스프링 기반 프로젝트를 만들어주는 사이트
 
-### :four_leaf_clover: Project - Maven, Gradle
+#### :four_leaf_clover: Project - Maven, Gradle
 
-과거에는 Maven을 많이 사용하였지만, 현재는 Gradle을 많이 사용하는 추세
+- 과거에는 Maven을 많이 사용하였지만, 현재는 Gradle을 많이 사용하는 추세
 
-### :four_leaf_clover: Language - Java
+#### :four_leaf_clover: Language - Java
 
-### :four_leaf_clover: Spring Boot
+#### :four_leaf_clover: Spring Boot 
 
-버전 선택
+- 스프링 버전 선택
 
 ## 프로젝트 파일 구성요소
 
