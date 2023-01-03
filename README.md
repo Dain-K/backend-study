@@ -3,6 +3,11 @@
 - Java 11 사용
 - IDE: IntelliJ 또는 Eclipse 사용
 
+### IntelliJ 사용 시 주의사항
+
+IntelliJ 설정에서 [빌드도구 > Gradle] 에서 [빌드 및 실행] 을 모두 Gradle 이 아닌 IntelliJ로 변경해주어야 한다. <br/>
+그렇지 않을 경우 Gralde을 통해 실행하여 느려지는 경우가 발생하기 때문이다. IntelliJ를 사용하여 빌드하게 되면 훨씬 빨리 동작한다.
+
 ## 스프링 프로젝트 생성
 
 #### https://start.spring.io
@@ -15,7 +20,7 @@
 
 #### :four_leaf_clover: Language - Java
 
-#### :four_leaf_clover: Spring Boot 
+#### :four_leaf_clover: Spring Boot
 
 - 스프링 버전 선택
 
@@ -31,3 +36,8 @@
 - src/main/resources/application.properties: 애플리케이션에서 사용할 여러가지 프로퍼티 정의
 - src/main/resouces/static: 스타일시트, 자바스크립트, 이미지 등의 정적 리소스 파일 경로
 - src/main/resources/template: 뷰 템플릿(Thymeleaf, Velocity 등) 파일 경로
+
+## 스프링부트 dependencies
+
+- thymeleaf
+- spring-web
