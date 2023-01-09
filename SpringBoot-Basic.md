@@ -222,3 +222,41 @@ hello-spring-0.0.1-SNAPSHOT.jar 파일을 복사하여 서버에 넣고 java -ja
 
 </div>
 </details>
+
+### 스프링 웹 개발
+
+<details>
+<summary> :one: 정적 컨텐츠 </summary>
+<div markdown="1">
+
+## 정적 컨텐츠
+
+- 스프링 부트 정적 컨텐츠 기능
+- 파일을 웹브라우저에 그대로 내려주는 방식
+- 스프링에서는 자동으로 제공이 됨
+
+</div>
+</details>
+
+<details>
+<summary> :two: MVC와 템플릿 엔진 </summary>
+<div markdown="1">
+
+## MVC와 템플릿 엔진
+
+- MVC = Model View Controller
+- 서버에서 파일을 변형하여 내려주는 방식
+
+</div>
+</details>
+
+<details>
+<summary> :three: API </summary>
+<div markdown="1">
+
+## API
+
+- 서버끼리 통신할 때 사용
+
+</div>
+</details>
