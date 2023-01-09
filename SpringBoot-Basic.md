@@ -187,8 +187,8 @@ public class HelloController {
 
 ## 동작 환경 그림
 
-![동작환경그림](https://github.com/Dain-K/backend-study/issues/1#issue-1524819300)
-
+![동작환경그림](https://user-images.githubusercontent.com/81922587/211231632-21291013-efa9-4298-a2e0-d6a035cb3a72.png)
+	
 - 컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버(viewResolver)가 화면을 찾아서 처리
   - 스프링 부트 템플릿 엔진 기본 ViewName 매핑
   - resources:templates/ + {ViewName} + .html
