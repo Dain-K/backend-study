@@ -1,6 +1,19 @@
 ## SpringBoot Basic
 
 <details>
+<summary> IntelliJ 단축키 </summary>
+<div markdown="1">
+
+## IntelliJ 단축키
+
+### :dart: Getter, Setter 자동생성 단축키
+
+- Widow의 경우: Alt + Inset
+
+</div>
+</details>
+
+<details>
 <summary> spring 시작하기 ! </summary>
 <div markdown="1">
 
@@ -188,7 +201,7 @@ public class HelloController {
 ## 동작 환경 그림
 
 ![동작환경그림](https://user-images.githubusercontent.com/81922587/211231632-21291013-efa9-4298-a2e0-d6a035cb3a72.png)
-	
+
 - 컨트롤러에서 리턴 값으로 문자를 반환하면 뷰 리졸버(viewResolver)가 화면을 찾아서 처리
   - 스프링 부트 템플릿 엔진 기본 ViewName 매핑
   - resources:templates/ + {ViewName} + .html
@@ -235,6 +248,23 @@ hello-spring-0.0.1-SNAPSHOT.jar 파일을 복사하여 서버에 넣고 java -ja
 - 파일을 웹브라우저에 그대로 내려주는 방식
 - 스프링에서는 자동으로 제공이 됨
 
+#### resources/static/hello-static.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h1>정적 컨텐츠 입니다.</h1>
+  </body>
+</html>
+```
+
+위 코드의 링크 주소는 http://localhost:8080/hello-static.html 이다.
+
 </div>
 </details>
 
@@ -244,8 +274,42 @@ hello-spring-0.0.1-SNAPSHOT.jar 파일을 복사하여 서버에 넣고 java -ja
 
 ## MVC와 템플릿 엔진
 
-- MVC = Model View Controller
+- MVC: Model, View, Controller
+- View를 html 형식으로 렌더링 하여 렌더링이 된 html을 고객에게 전달해줌
 - 서버에서 파일을 변형하여 내려주는 방식
+
+### Controller
+
+```java
+@Controller
+public class HelloController {
+ @GetMapping("hello-mvc")
+ public String helloMvc(@RequestParam("name") String name, Model model) {
+ model.addAttribute("name", name);
+ return "hello-template";
+ }
+}
+```
+
+### View
+
+화면과 관련된 것들만 관리하도록
+
+```html
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <p th:text="'hello ' + ${name}">hello! empty</p>
+  </body>
+</html>
+```
+
+### 실행
+
+http://localhost:8080/hello-mvc?name=spring!!!!!!!!!!!!!!!!!!!!!
+
+### MVC, 템플릿 엔진 이미지
+
+![엔진이미지](https://user-images.githubusercontent.com/81922587/211450729-18eaf68f-82b0-43c4-817c-03311e4c701e.png)
 
 </div>
 </details>
@@ -257,6 +321,73 @@ hello-spring-0.0.1-SNAPSHOT.jar 파일을 복사하여 서버에 넣고 java -ja
 ## API
 
 - 서버끼리 통신할 때 사용
+- 데이터를 바로 내려줌. 객체를 반환
+
+### @Response Body 문자 변환
+
+- ResponseBody 필수
+
+```java
+
+@Controller
+public class HelloController{
+  // API 방식
+  @GetMapping("hello-string")
+  @ResponseBody // 중요, html 응답 body 부분에 data를 직접 넣어준다는 것을 명시함
+  public String helloString(@RequestParam("name") String name){
+    return "hello " + name; // "hello spring"
+    // 위 방식과의 차이는 View를 사용하지 않고 그냥 데이터를 보내준다는 것이다.
+    // html 파일을 만들지 않아도 데이터를 웹에 출력한다.
+  }
+}
+
+```
+
+#### 실행
+
+http://localhost:8080/hello-string?name=spring!!!!!!!!!!!!!!!!!!!!!
+
+### @ResponseBody 객체 반환
+
+- ResponseBody 필수
+- 객체를 반환하면 객체가 JSON으로 변환됨
+- 원할 경우 원하는 파일 형태로 변환이 가능함 -> 그에 맞는 Converter가 동작
+
+```java
+@Controller
+public class HelloController{
+  @GetMapping("hello-api")
+  @ResponseBody
+  public Hello helloApi(@RequestParam("name") String name) {
+    Hello hello = new Hello();
+    hello.setName(name);
+    return hello;
+  }
+
+  public class Hello{
+    private String name;
+
+    public String getName() {
+      return name;
+    }
+
+    public void setName(String name) {
+      this.name = name;
+    }
+  }
+}
+```
+
+### @ResponseBody 사용 원리
+
+![@ResponseBody사용원리](https://user-images.githubusercontent.com/81922587/211455512-40184e7c-dca1-4b13-9075-abccaadc14dd.png)
+
+- @ResponseBody 를 사용
+  - HTTP의 BODY에 문자 내용을 직접 반환
+  - viewResolver 대신에 HttpMessageConverter 가 동작
+  - 기본 문자처리: StringHttpMessageConverter
+  - 기본 객체처리: MappingJackson2HttpMessageConverter
+  - byte 처리 등등 기타 여러 HttpMessageConverter가 기본으로 등록되어 있음
 
 </div>
 </details>
