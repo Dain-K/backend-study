@@ -391,3 +391,28 @@ public class HelloController{
 
 </div>
 </details>
+
+### 회원 관리 - BackEnd
+
+<details>
+<summary> 기능 정리 </summary>
+<div markdown="1">
+
+## 기능
+
+- 데이터: 회원ID, 이름
+- 기능: 회원등록, 조회
+- 아직 데이터 저장소가 선정되지 않음
+- (가상의 시나리오)
+
+### Web Application 계층 구조
+
+![계층구조](https://user-images.githubusercontent.com/81922587/211459259-3936003d-b2e8-484e-86d6-a401c637b3bb.png)
+
+- 컨트롤러: 웹 MVC의 컨트롤러 역할
+- 서비스: 핵심 비즈니스 로직 구현
+- 리포지토리: 데이터베이스에 접근, 도메인 객체를 DB에 저장하고 관리
+- 도메인: 비즈니스 도메인 객체, ex) 회원, 주문, 쿠폰 등등 주로 데이터베이스에 저장하고 관리됨
+
+</div>
+</details>
